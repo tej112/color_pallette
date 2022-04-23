@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Palette</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!--choose an image-->
+<form action="{{ url_for('index') }}" method="post" enctype="multipart/form-data">
+    <input type="file" name="image" id="image">
+    <input type="submit" name="submit" value="Upload">
+</form>
+<!-- display color palette and a button to copy hex code-->
+{% if hex_color: %}
+    <div class="color-palette">
+        <div class="color-palette-row">
+            {% for color in hex_color %}
+                <div class="color-palette-cell" style="background-color: {{ color }}">
+                    <input type="text" value="{{ color }}" readonly>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+</body>
+</html>
